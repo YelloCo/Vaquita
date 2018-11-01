@@ -1,0 +1,10 @@
+<% review.review_issues.each do |issue| %>
+  <span class="tag is-vaquita is-large">
+    <%= issue.title %>&nbsp;&nbsp;&nbsp;
+    <%= link_to review_issue_path(issue), method: :delete, data: { confirm: 'Are you sure?' }, class: 'tag-link' do %>
+      <button class="delete"></button>
+    <% end %>
+  </span>
+  <%= render 'review_issues/modal', review_issue: issue %>
+<% end %>
+<br />

@@ -1,0 +1,21 @@
+$icon-color: #a9a9a9;
+
+.time-field::-webkit-outer-spin-button,
+.time-field::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.time-field {
+  width: 140px;
+}
+
+.is-spacer {
+  width: 150px;
+}
+
+.new-repository {
+  .fa {
+    color: $icon-color;
+  }
+}

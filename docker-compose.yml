@@ -1,0 +1,8 @@
+version: "2.0"
+services:
+  web:
+    build: .
+    working_dir: /var/www/vaquita
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
+    ports:
+      - "3100:80"

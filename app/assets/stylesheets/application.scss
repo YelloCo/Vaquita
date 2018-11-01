@@ -1,0 +1,32 @@
+$primary: #163c4a; //rgb 22, 60, 74
+$primary-invert: #fff;
+
+$pagination-hover-color: $primary;
+$pagination-current-background-color: $primary;
+$navbar-dropdown-arrow: $primary;
+$navbar-item-hover-color: $primary;
+
+$common-shadow-color: rgba(20, 20, 20, .6);
+$table-striped-row-even-background-color: rgba(22, 60, 74, .05);
+$table-striped-row-even-hover-background-color: rgba(22, 60, 74, .10);
+
+@import 'bulma';
+@import 'font-awesome';
+@import './**/*'; //Import this after bulma to use variables
+
+.application-notification {
+  box-shadow: 0 1px 8px 0 $common-shadow-color;
+  position: fixed;
+  right: 20px;
+  top: 75px;
+  width: 350px;
+}
+
+.application-notification:hover {
+  opacity: .75;
+}
+
+.hide {
+  display: none;
+}
+

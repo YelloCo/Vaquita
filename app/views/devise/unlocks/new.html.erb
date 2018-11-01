@@ -1,0 +1,23 @@
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'edit-user' }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.email_field :email, autofocus: true, class: 'input' %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= f.submit 'Resend unlock instructions', class: 'button is-primary' %>
+  </div>
+<% end %>
+
+<br >
+
+<%= render "devise/shared/links" %>

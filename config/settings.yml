@@ -1,0 +1,23 @@
+# auth:
+#   pepper: abc123
+#   secret_key_base: abc123
+
+# vaquita:
+#   host: vaquita.example.com
+#   time_zone: 'America/Chicago'
+#   email_from: security@example.com
+
+# database:
+#   dbms: postgresql
+#   database: vaquita
+#   host: some-instance-id.rds.amazonaws.com
+#   username: my_vaquita
+#   password: vaquita123
+
+# mail:
+#   smtp_address: aspmx.l.google.com
+#   smtp_port: 25
+
+# deploy:
+#   address: vaquita.mydoamin.com
+#   user: ssh_user_name

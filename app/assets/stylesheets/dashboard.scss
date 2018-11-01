@@ -1,0 +1,18 @@
+$nav-green: #008000;
+$nav-darkorange: #ff8c00;
+$nav-red: #f00;
+
+.level {
+  .good {
+    color: $nav-green;
+  }
+
+  .warn {
+    color: $nav-darkorange;
+  }
+
+  .bad {
+    color: $nav-red;
+    font-weight: 800;
+  }
+}

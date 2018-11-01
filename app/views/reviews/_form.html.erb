@@ -1,0 +1,7 @@
+<%= form_with(model: review, local: true) do |form| %>
+  <%= form.hidden_field :status, value: 'Completed' %>
+
+  <div class="actions">
+    <%= form.submit "#{button_action.capitalize} Review", class: 'button is-primary is-inverted' %>
+  </div>
+<% end %>

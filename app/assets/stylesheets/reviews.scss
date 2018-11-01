@@ -1,0 +1,56 @@
+$tag-text-color: #eee;
+$checkmark-green: #008000;
+$triangle-darkorange: #ff8c00;
+
+table {
+  width: 100%;
+
+  .fa-exclamation-triangle {
+    color: $triangle-darkorange;
+  }
+
+  .fa-check {
+    color: $checkmark-green;
+  }
+}
+
+.tag {
+  cursor: pointer;
+  margin-bottom: 5px;
+
+  .tag-link {
+    display: inherit;
+  }
+
+  &:not(body) {
+    border-radius: 18px;
+
+    &.is-vaquita {
+      background-color: $primary;
+      color: $tag-text-color;
+    }
+  }
+}
+
+.custom-field-inline {
+  .spacer {
+    margin: 0 auto;
+  }
+
+  .no-border-radius {
+    border-radius: 0;
+    margin-left: -1px;
+  }
+
+  .no-border-right {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    z-index: 2;
+  }
+
+  .no-border-left {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+  }
+}

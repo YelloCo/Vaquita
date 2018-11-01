@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @repository.name %>
+</p>
+
+<p>
+  <strong>Git dir:</strong>
+  <%= @repository.git_dir %>
+</p>
+
+<p>
+  <strong>Branch:</strong>
+  <%= @repository.branch %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  <%= @repository.frequency %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @repository.time %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @repository.user %>
+</p>
+
+<p>
+  <strong>Last commit:</strong>
+  <%= @repository.last_commit %>
+</p>
+
+<%= link_to 'Edit', edit_repository_path(@repository), class: :button %>

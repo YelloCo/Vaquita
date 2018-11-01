@@ -1,0 +1,37 @@
+<article class="message is-primary">
+  <div class="message-body">
+    <h4 class="title is-4">Guide</h4>
+
+    <h6 class="title is-6">Type</h6>
+    <p class="subtitle is-6 is-spaced">Choose from the supported Git hosting providers.</p>
+
+    <h6 class="title is-6">Host</h6>
+    <p class="subtitle is-6 is-spaced">The full domain url of the hosting server (i.e. https://gitlab.com). This application supports self-hosted instances of Git servers.</p>
+
+    <h6 class="title is-6">API Token</h6>
+    <p class="subtitle is-6 is-spaced">The api token used for authentication purposes.<br>For Gitlab, see the documentation <a href="https://docs.gitlab.com/ce/user/profile/personal_access_tokens.html" target="_blank">here</a>.</p>
+
+    <br/><hr></br/>
+
+    <h6 class="title is-6">Name</h6>
+    <p class="subtitle is-6 is-spaced">Name of the repository referenced throughout the application.</p>
+
+    <h6 class="title is-6">Project/Repository</h6>
+    <p class="subtitle is-6 is-spaced">The project/repository namespace. This is the relative url of the server (i.e. /project/repository)</p>
+
+    <h6 class="title is-6">Branch</h6>
+    <p class="subtitle is-6 is-spaced">The prefix of the branch name to run against. For example: <i>/release/</i> would match anything beginning with <i>/release/*</i>. This should be a standard regex. End the branch name with a "$" to do an exact match only.</p>
+
+    <h6 class="title is-6">Frequency</h6>
+    <p class="subtitle is-6 is-spaced">How often you want the scheduler to run a code delta/difference on your repository and branch.</p>
+
+    <h6 class="title is-6">Time</h6>
+    <p class="subtitle is-6 is-spaced">When the scheduler should run. This option isn't available for the hourly frequency.</p>
+
+    <h6 class="title is-6">Custom Filters</h6>
+    <p class="subtitle is-6 is-spaced">These files, folders, or extensions will also be ignored. Separate via newlines. (e.g. <i>spec/**</i> will ignore any code delta/difference in the spec folder). This support <a href="https://git-scm.com/docs/gitglossary#gitglossary-aiddefpathspecapathspec" target="_blank" rel="noreferrer noopener">git pathspecs</a>.</p>
+
+    <h6 class="title is-6">Email Notifications</h6>
+    <p class="subtitle is-6 is-spaced">Emails in this field will receive an email notification when a new review is ready to be completed. (comma separated)</p>
+  </div>
+</article>

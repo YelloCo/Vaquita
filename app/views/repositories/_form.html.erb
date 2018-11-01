@@ -1,0 +1,81 @@
+<%= form_with(model: repository, local: true, id: :new_repository, class: 'new-repository') do |form| %>
+  <% if repository.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(repository.errors.count, "error") %> prohibited this repository from being saved:</h2>
+      <ul><% repository.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, class: :label %>
+    <%= form.text_field :name, id: :repository_name, class: :input %>
+  </div>
+
+  <div class="field">
+    <%= form.label :git_dir, 'Directory', class: :label %>
+    <%= form.text_field :git_dir, id: :repository_git_dir, class: :input %>
+  </div>
+
+  <div class="field">
+    <%= form.label :branch, class: :label %>
+    <%= form.text_field :branch, id: :repository_branch, class: :input %>
+  </div>
+
+  <br/><br />
+
+  <div class="field">
+    <%= form.label :frequency, class: :label %>
+    <div class="control has-icons-left">
+      <div class="select">
+        <%= form.select :frequency,
+        [['Hourly', :hourly], ['Daily', :daily], ['Weekly', :weekly], ['Monthly', :monthly]],
+            {}, { class: :input, id: :repository_frequency } %>
+      </div>
+      <div class="icon is-small is-left">
+        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <% disable = repository.frequency == 'hourly' ? 'disabled' : '' %>
+    <%= form.label :time, class: :label %>
+    <%= form.time_field :time, id: :repository_time, value: repository.time, class: "input time-field #{disable}" %>
+  </div>
+
+  <br/><br />
+
+  <button class="button" type="button" id="repositories-advanced-settings">Advanced Settings</button>
+
+  <br />
+
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Advanced Settings</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="field">
+          <%= form.label :ignores, 'Custom Filters', class: :label %>
+          <textarea type="text" class="textarea" id="repository_ignores" placeholder="spec/**/* (newline separated)" rows="3" name="repository[ignores]"><%= repository.ignores %></textarea>
+        </div>
+        <br />
+        <div class="field">
+          <%= form.label :notification_emails, 'Email Notifications', class: :label %>
+          <textarea type="text" class="textarea" id="repository_notification_emails" placeholder="email addresses (comma separated)" rows="1" name="repository[notification_emails]"><%= repository.notification_emails %></textarea>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="button">Done</button>
+      </footer>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: 'button is-primary' %>
+    <%= link_to 'Cancel', repositories_url, class: :button %>
+  </div>
+<% end %>

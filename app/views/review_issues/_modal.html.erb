@@ -1,0 +1,23 @@
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"><%= review_issue.title %></p>
+      <button class="delete close" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <%= review_issue.description %>
+      <br />
+      <% if review_issue.tracking_url %>
+        <br />
+        <span class="icon is-small is-left">
+          <i class="fa fa-link"></i>
+        </span>
+        <a target="_blank" href="<%= review_issue.tracking_url %>"><%= review_issue.tracking_url %></a>
+      <% end %>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button close">Close</button>
+    </footer>
+  </div>
+</div>

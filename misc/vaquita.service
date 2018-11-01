@@ -1,0 +1,14 @@
+[Unit]
+Description=Vaquita Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Environment=RAILS_ENV=production
+WorkingDirectory=/apps/vaquita
+ExecStartPre=bundle install --gemfile /apps/vaquita/Gemfile && bundle exec rake db:migrate
+ExecStart=/bin/sh -c 'rails s -p 80 > /var/log/vaquita_web.log 2>&1'
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+<div class="tabs">
+  <ul>
+    <li class="<%= 'is-active' if !params[:show] %>">
+      <a href="<%= new_repository_path %>">Local Repository</a>
+    </li>
+    <li class="<%= 'is-active' if params[:show] == 'remote' %>">
+      <a href="<%= new_repository_path %>?show=remote">Remote Repository</a>
+    </li>
+  </ul>
+</div>
+
+<% if !params[:show] %>
+	<div class="columns">
+	  <div class="column is-half">
+	    <%= render 'form', repository: @repository %>
+	  </div>
+	  <div class="column is-narrow is-spacer"></div>
+	  <div class="column guide">
+	    <%= render 'guide' %>
+	  </div>
+	</div>
+<% elsif params[:show] == 'remote' %>
+  <div class="columns">
+    <div class="column is-half">
+      <%= render 'remote_form', repository: @repository %>
+    </div>
+    <div class="column is-narrow is-spacer"></div>
+    <div class="column guide">
+      <%= render 'remote_guide' %>
+    </div>
+  </div>
+<% end %>

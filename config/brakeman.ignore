@@ -1,0 +1,25 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "7a23b0a25f106565962ab19c6e3ed7a0955629aaef745aa0579a4fb18ae95735",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/documentation/show.html.erb",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "parsed_doc(\"#{Rails.root}/docs/#{File.basename(params[:id])}.md\")",
+      "render_path": [{"type":"controller","class":"DocumentationController","method":"show","line":12,"file":"app/controllers/documentation_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "documentation/show"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "note": "File.basename will prevent directory traversal, and there is no xss here."
+    }
+  ],
+  "updated": "2018-02-28 10:56:44 -0600",
+  "brakeman_version": "4.2.0"
+}

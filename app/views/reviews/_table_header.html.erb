@@ -1,0 +1,39 @@
+<%= form_with(model: Review, local: true, method: :get, id: 'reviews-filter-form') do |form| %>
+  <div class="field is-horizontal custom-field-inline">
+    <div class="control has-icons-left">
+      <div class="select">
+        <select name="filter[key]" class="no-border-right">
+          <option value="repository">Repository</option>
+          <option value="status" <%='selected' if params.dig(:filter, :key) == 'status' %>>Status</option>
+          <option value="completed_by" <%='selected' if params.dig(:filter, :key) == 'completed_by' %>>Completed By</option>
+        </select>
+      </div>
+      <div class="icon is-left">
+        <i class="fa fa-filter"></i>
+      </div>
+    </div>
+    <div class="control">
+      <input class="input no-border-radius" type="text" placeholder="Filter..." name="filter[value]" value="<%= params.dig(:filter, :value) %>">
+    </div>
+    <div class="control">
+      <button class="button no-border-left" type="submit">
+        <div class="icon">
+          <i class="fa fa-search"></i>
+        </div>
+      </button>
+    </div>
+    <div class="spacer"></div>
+    <div class="control has-icons-left">
+      <div class="select">
+        <select name="sort[key]" id="reviews-filter-sort">
+          <option value="created_at">Created At</option>
+          <option value="issue_count" <%= 'selected' if params.dig(:sort, :key) == 'issue_count' %>>Issue Count</option>
+        </select>
+      </div>
+      <div class="icon is-small is-left">
+        <i class="fa fa-sort-amount-asc"></i>
+      </div>
+    </div>
+  </div>
+<% end %>
+<br />

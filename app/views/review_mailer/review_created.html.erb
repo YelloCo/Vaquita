@@ -1,0 +1,6 @@
+<div>
+	A new code review has been created for the <%= @review.repository.name %> repository.
+	<br />
+	<br />
+	Complete the review here: <%= link_to('Complete Review', complete_review_url(@review.id)) %>
+</div>

@@ -1,0 +1,43 @@
+<%= notice %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'new-user' }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.email_field :email, autofocus: true, class: 'input' %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="field">
+    <%= f.label :password, class: 'label' %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <div class="control">
+      <%= f.password_field :password, autocomplete: 'off', class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: 'label' %>
+    <div class="control">
+      <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'input' %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= f.submit 'Sign up', class: 'button is-primary' %>
+  </div>
+<% end %>
+
+<br>
+
+<%= render "devise/shared/links" %>

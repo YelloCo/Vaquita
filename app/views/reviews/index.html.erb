@@ -1,0 +1,57 @@
+<%= render 'table_header' %>
+<table class="table is-striped is-hoverable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Repository</th>
+      <th>Completed By</th>
+      <th>Status</th>
+      <th>Issues</th>
+      <th>Action</th>
+      <th>
+        <span data-balloon="Created At" data-balloon-pos="right">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+        </span>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.name %></td>
+        <td><%= review.repository.name || 'N/A' %></td>
+        <td><%= review.user.present? ? review.user.email : 'N/A' %></td>
+        <td>
+          <% if review.status == 'New' %>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;New
+          <% else %>
+            <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Completed
+          <% end %> 
+        </td>
+        <td>
+          <% if review.review_issues.size.zero? %>
+            <%= review.review_issues.size %>
+          <% else %>
+            <%= link_to review.review_issues.size, review_path(review, show: :issues), class: 'has-text-primary' %>
+          <% end %>
+        </td>
+        <td>
+        <% if review.status == 'Completed' %>
+          <%= link_to 'View', review_path(review) %>
+        <% else %>
+          <%= link_to 'Complete', complete_review_path(review) %>
+        <% end %>    
+        </td>
+        <td>
+          <span data-balloon="<%= review.created_at %>" data-balloon-pos="right">
+            <%= time_ago_in_words(review.created_at).gsub('less than', '').gsub('about', '') %> ago
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= render 'pagination', pagination: @pagination %>

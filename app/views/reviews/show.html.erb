@@ -1,0 +1,71 @@
+<div class="tabs">
+  <ul>
+    <li class="<%= 'is-active' if !params[:show] %>">
+      <a href="<%= review_path(@review) %>">Details</a>
+    </li>
+    <li class="<%= 'is-active' if params[:show] == 'code' %>">
+      <a href="<%= review_path(@review) %>?show=code">Code</a>
+    </li>
+    <li class="<%= 'is-active' if params[:show] == 'issues' %>">
+      <a href="<%= review_path(@review) %>?show=issues">Issues</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content <%= 'hide' unless !params[:show] %>">
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Completed By</p>
+        <p class="subtitle"><%= User.find(@review.completed_by)&.email %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Completion Time</p>
+        <p class="title <%= @time_diff_in_min < 1440 ? 'good' : (@time_diff_in_min > 4320 ? 'bad' : 'warn') %>">
+          <%= @time_difference %>
+        </p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Issues Found</p>
+        <p class="title"><%= @review.review_issues.count %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Branch</p>
+        <p class="subtitle"><%= @review.branch || 'error' %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Commit Hashes</p>
+        <p class="subtitle">
+          <%= @review.beginning_commit ? @review.beginning_commit[0..7] : 'error' %><br />
+          to
+          <br />
+          <%= @review.ending_commit ? @review.ending_commit[0..7] : 'error' %>
+        </p>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="content <%= 'hide' unless params[:show] == 'code' %>">
+  <%= render 'diff', review: @review %>
+</div>
+
+<div class="content <%= 'hide' unless params[:show] == 'issues' %>">
+  <% if @review.review_issues.count == 0 %>
+    There were no issues in this review.
+  <% else %>
+    <%= render 'issues', review: @review %>
+  <% end %>
+</div>
+
+<br />
+
+<%= link_to 'Edit', edit_review_path(@review), class: :button %>

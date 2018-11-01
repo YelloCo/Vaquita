@@ -1,0 +1,9 @@
+<div class="field">
+  <label class="label">Email</label>
+</div>
+<%= @user.email %>
+
+<br />
+<br />
+<%= link_to 'Send Password Reset', user_path(@user) + '?send_password_reset=true', method: 'put', class: :button %>
+

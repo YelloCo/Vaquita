@@ -1,0 +1,40 @@
+<% if @review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="columns">
+  <div class="column is-three-quarters">
+    <%= render 'diff', review: @review %>
+  </div>
+  <div class="column">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title"><%= @review.name %></p>
+      </header>
+      <div class="card-content">
+        <% if @review.review_issues %>
+          <%= render 'issues', review: @review %>
+        <% end %>
+        <button class="button" id="review-issue-attach">Attach Issue</button>
+        <div class="hide" id="review-issue-container">
+          <%= render 'review_issues/form', review_issue: @review.review_issues.new %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-item">
+          <%= render 'form', review: @review, button_action: :save %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<%= link_to 'Back', reviews_path %>

@@ -1,0 +1,8 @@
+<% if @repositories.count.zero? %>
+	<%= render 'no_repos' %>
+<% end %>
+
+<% @repositories.each do |repo| %>
+  <%= render 'row', repo: repo %>
+  <br />
+<% end %>

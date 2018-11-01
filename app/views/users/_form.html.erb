@@ -1,0 +1,26 @@
+<%= form_with(model: user, local: true, id: 'new_user', class: 'new-user') do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% user.errors.full_messages.each do |message| %><li><%= message %></li><% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.email_field :email, autofocus: true, class: 'input', id: :user_email %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="actions">
+    <%= form.submit 'Invite', class: 'button is-primary' %>
+  </div>
+<% end %>

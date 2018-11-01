@@ -1,0 +1,18 @@
+<% return '' if pagination[:total_pages] == 1 %>
+
+<nav class="pagination is-small" role="navigation" aria-label="pagination">
+  <a class="pagination-previous" <%= 'disabled' if pagination[:page] == 1 %>
+    href="<%= page_query(pagination[:page] - 1) %>">Previous</a>
+  <a class="pagination-next" <%= 'disabled' if pagination[:page] == pagination[:total_pages] %>
+     href="<%= page_query(pagination[:page] + 1) %>">Next</a>
+  <ul class="pagination-list">
+    <% (1..pagination[:total_pages]).each do |page| %>
+      <li>
+        <a class="pagination-link <%= 'is-current' if page == pagination[:page] %>" 
+           aria-label="Page <%= page %>" 
+           aria-current="page"
+           href="<%= page_query(page) %>"><%= page %></a>
+      </li>
+    <% end %>
+  </ul>
+</nav>

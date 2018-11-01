@@ -1,0 +1,32 @@
+<h1 class="title"><%= repo[:name] %></h1>
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Outstanding Reviews</p>
+      <% outstanding_color = repo[:outstanding_count] == 0 ? 'good' : (repo[:outstanding_count] > 3 ? 'bad' : 'warn') %>
+      <p class="title">
+        <%= link_to repo[:outstanding_count], reviews_path(filter: {key: :repository, value: repo[:name]}), class: outstanding_color %>
+      </p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Avg Review Completion</p>
+      <p class="title <%= repo[:avg_time] < 1440 ? 'good' : (repo[:avg_time] > 4320 ? 'bad' : 'warn') %>">
+        <%= repo[:avg_time_string] %>
+      </p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Completed Reviews</p>
+      <p class="title"><%= repo[:completed_count] %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Issues Found</p>
+      <p class="title"><%= repo[:issues_found] %></p>
+    </div>
+  </div>
+</nav>

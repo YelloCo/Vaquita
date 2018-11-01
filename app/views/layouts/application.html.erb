@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vaquita</title>
+    <link rel="icon" type="image/png" href="/images/vaquita.png">
+    <link rel="stylesheet" href="/css/balloon.min.css">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+        <a class="navbar-item">
+          <img src="/images/vaquita.png" alt="Vaquita Application Logo" width="38" height="28">
+        </a>
+        <a class="navbar-item" href="/">Home</a>
+        <% if current_user %>
+        <a class="navbar-item" href="/reviews">Reviews</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <%= link_to 'Users', users_path, class: 'navbar-link' %>
+          <div class="navbar-dropdown">
+            <%= link_to 'Invite', new_user_path, class: 'navbar-item' %>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <%= link_to 'Docs', documentation_index_path, class: 'navbar-item' %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"><i class="fa fa-cog" aria-hidden="true"></i></a>
+            <div class="navbar-dropdown is-right">
+              <%= link_to 'Repositories', repositories_path, class: 'navbar-item' %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </nav>
+    </div>
+
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title"><%= @page_title %></h2>
+          <!-- <h2 class="subtitle"></h2> -->
+        </div>
+      </div>
+    </section>
+  
+    <section class="section">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Vaquita</strong> by <a href="https://yello.co" target="_blank">Yello</a>. The source code is licensed
+            <a href="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.
+          </p>
+          <p><a class="icon" href="https://code.yello.co/phil-prescher/vaquita" target="_blank"><i class="fa fa-github"></i></a></p>
+        </div>
+      </div>
+    </footer>
+
+    <% if notice %>
+      <div class="notification is-success application-notification">
+        <%= notice %>
+      </div>
+    <% elsif flash[:warning] %>
+      <div class="notification is-warning application-notification">
+        <%= flash[:warning] %>
+      </div>
+    <% elsif flash[:alert]%>
+      <div class="notification is-danger application-notification">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<div class="columns">
+  <div class="column is-half">
+  	<% unless @repository.remote_repository %>
+    	<%= render 'form', repository: @repository %>
+	<% else %>
+		<%= render 'remote_form', repository: @repository %>
+	<% end %>
+  </div>
+  <div class="column is-narrow is-spacer"></div>
+  <div class="column guide">
+  	<% unless @repository.remote_repository %>
+    	<%= render 'guide' %>
+	<% else %>
+		<%= render 'remote_guide' %>
+	<% end %>
+  </div>
+</div>

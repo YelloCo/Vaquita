@@ -1,0 +1,39 @@
+before_script:
+  - chruby 2.5.0
+  - gem install bundler --no-ri --no-rdoc
+  - bundle install --without production development --jobs 4 "${FLAGS[@]}"
+  #- apt-get install libxslt-dev libxml2-dev sqlite3 libsqlite3-dev chrome chromium-chromedriver
+
+variables:
+  RAILS_ENV: test
+
+stages:
+  - lint
+  - test
+
+rubocop:
+  stage: lint
+  script:
+    - bundle exec rubocop --parallel
+
+brakeman:
+  stage: lint
+  script:
+    - LC_ALL="en_US.UTF-8" bundle exec brakeman -z --no-pager
+
+scss:
+  stage: lint
+  script:
+    - bundle exec scss-lint app/assets/stylesheets/
+
+eslint:
+  stage: lint
+  script:
+    - bundle exec rake eslint
+
+spec:
+  stage: test
+  script:
+    - bundle exec rake db:setup
+    - bundle exec rspec
+    

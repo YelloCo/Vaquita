@@ -1,0 +1,24 @@
+auth:
+  pepper: abc12345
+  secret_key_base: abc12345
+
+vaquita:
+  host: vaquita.example.com
+  time_zone: 'America/Chicago'
+  email_from: noone@example.com
+
+mail:
+  smtp_address: aspmx.l.google.com
+  smtp_port: 25
+
+database:
+  dbms: sqlite3
+  database: development
+  host:
+  username:
+  password:
+
+
+deploy:
+  address: vaquita.mydomain.com
+  user: ssh_username_here

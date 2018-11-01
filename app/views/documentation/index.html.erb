@@ -1,0 +1,11 @@
+<div class="content">
+  <ul>
+  <% @docs.each do |doc| %>
+    <li>
+      <a href="<%= documentation_path(File.basename(doc, '.md')) %>">
+        <%= File.basename(doc, '.md').titleize %>
+      </a>
+    </li>
+  <% end %>
+  </ul>
+</div>

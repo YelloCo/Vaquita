@@ -1,0 +1,34 @@
+<%= form_with(model: review_issue, local: true) do |form| %>
+  <%= form.hidden_field :review_id %>
+
+  <div class="field">
+    <%= form.label :title, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.text_field :title, autofocus: true, class: 'input', required: :required, id: :review_issue_title %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-tag"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: 'label' %>
+    <div class="control">
+      <%= form.text_area :description, class: 'textarea', rows: 2, required: :required, id: :review_issue_description %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :tracking_url, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= form.text_field :tracking_url, class: 'input', placeholder: 'optional', id: :review_issue_tracking_url %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-link"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: 'button is-primary' %>
+  </div>
+<% end %>

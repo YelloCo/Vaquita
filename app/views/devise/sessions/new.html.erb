@@ -1,0 +1,45 @@
+<%= flash[:error] %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'new-user' }) do |f| %>
+  <div class="field">
+    <%= f.label :email, class: 'label' %>
+    <div class="control has-icons-left">
+      <%= f.email_field :email, autofocus: true, class: 'input', placeholder: 'Email' %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <%= f.label :password, class: 'label' %>
+    <div class="control">
+      <%= f.password_field :password, autocomplete: 'off', class: 'input' %>
+    </div>
+  </div>
+
+  <br>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.label :remember_me, class: 'checkbox' do |label| %>
+        <%= f.check_box :remember_me %>
+        Remember me
+      <% end %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: 'button is-primary' %>
+  </div>
+<% end %>
+
+<br >
+
+<%= render "devise/shared/links" %>
+
+<% if User.count == 0 %>
+<br /><b>Since there are no users in the system, you can create the initial user here:</b><br/>
+<%= link_to 'Create first user', new_user_path, class: 'button is-primary' %>
+<% end %>
