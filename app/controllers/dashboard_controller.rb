@@ -25,6 +25,7 @@ class DashboardController < ApplicationController
       (review.completed_at - review.created_at).to_i / 60
     end
     return 0 if times.empty?
+
     times[0..13].reduce(:+) / times[0..13].size
   end
 end

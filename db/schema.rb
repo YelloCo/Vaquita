@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 20180529151546) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.boolean "password_reset_required", default: false
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"

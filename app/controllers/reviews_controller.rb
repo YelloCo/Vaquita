@@ -40,6 +40,7 @@ class ReviewsController < ApplicationController
 
   def completed_params
     return {} if @review.completed_at.present?
+
     { completed_by: current_user.id, completed_at: Time.now }
   end
 

@@ -86,6 +86,7 @@ class GitlabHelper
     return "\e[1m#{line}\e[m" if ['---', '+++'].include?(line[0..2])
     return "\e[31m#{line}\e[m" if line[0] == '-'
     return "\e[32m#{line}\e[m" if line[0] == '+'
+
     line
   end
 end

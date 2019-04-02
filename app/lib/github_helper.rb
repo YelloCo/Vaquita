@@ -11,6 +11,7 @@ class GithubHelper
 
   def check_for_valid_repo_dir(git_dir)
     return true if project_exists?
+
     raise "Not a valid git repository: #{git_dir}"
   end
 
@@ -52,6 +53,7 @@ class GithubHelper
   def base_url
     uri = URI.parse(@repo.remote_url)
     return 'https://api.github.com' if [uri.host, uri.path].include?('github.com')
+
     "#{uri.scheme}://#{uri.host}/api/v3"
   end
 
@@ -94,6 +96,7 @@ class GithubHelper
     return "\e[1m#{line}\e[m" if ['---', '+++'].include?(line[0..2])
     return "\e[31m#{line}\e[m" if line[0] == '-'
     return "\e[32m#{line}\e[m" if line[0] == '+'
+
     line
   end
 

@@ -67,6 +67,7 @@ class Delta
 
   def repo
     return @repo.reload if @repo
+
     @repo = Repository.find(@repo_id)
   end
 
@@ -77,6 +78,7 @@ class Delta
   def set_working_branch
     branches = helper.git_branches(git_dir, repo.branch)
     raise "Cannot find branch matching criteria(#{git_dir}:#{repo.branch})" unless branches.present?
+
     branches.max&.chomp
   end
 
